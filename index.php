@@ -10,5 +10,6 @@ include('func.php');
 // database_service('bieughi_n2');
 // app_routing_module('bieughi_n2');
 // app_component_ts('bieughi_n2');
-app_component_html('bieughi_n2','DẤU CHÂN VOI')
+// app_component_html('bieughi_n2','DẤU CHÂN VOI');
+home_page_html('bieughi_n2','DẤU CHÂN VOI');
 ?>

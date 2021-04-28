@@ -113,6 +113,33 @@ function app_component_html($tblname,$title){
   echo $txt;
 }
 
+function home_page_html($tblname,$title){
+  $txt = file_get_contents('home.page.html');
+  $path=str_replace('_','-',$tblname);
+
+  $loc0='
+<!-- //-----LOC0--------// -->
+
+      <ion-card-header>
+        <ion-card-title>'.$title.'</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-item button (click)="db.go2page(\'list-'.$path.'\')">
+        <ion-icon name="list" slot="start"></ion-icon>
+        <ion-label>Số liệu đã thu thập</ion-label>
+        <ion-button fill="outline" slot="end">Xem</ion-button>
+        </ion-item>
+        <ion-item button (click)="db.go2page(\'add-'.$path.'\')">
+        <ion-icon name="add-circle" slot="start"></ion-icon>
+        <ion-label>Thêm số liệu</ion-label>
+        <ion-button fill="outline" slot="end">Thêm</ion-button>
+        </ion-item>
+      </ion-card-content>';
+
+  $txt=str_replace("<!-- //-----LOC0--------// -->",$loc0,$txt);
+  echo $txt;
+}
+
 
 
 
