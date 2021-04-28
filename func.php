@@ -220,6 +220,11 @@ function list_page_html($tblname,$title,$attr1,$attr2,$attr3,$attr4){
   // bieughi-n1
   $txt = str_replace('bieughi-n1',$path,$txt);
 
+  $txt = str_replace('Tên tuyến điều tra, giám sát',$attr1,$txt);
+  $txt = str_replace('Thời gian bắt đầu',$attr2,$txt);
+  $txt = str_replace('Tên khu vực điều tra, giám sát',$attr3,$txt);
+  $txt = str_replace('Ghi chú',$attr4,$txt);
+
   echo $txt;
 }
 
