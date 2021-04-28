@@ -65,5 +65,9 @@ function app_routing_module($tblname){
     echo $txt;
 }
 
+function app_component($tblname,$title){
+
+}
+
 
 ?>
