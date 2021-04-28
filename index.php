@@ -14,5 +14,6 @@ include('func.php');
 // home_page_html('bieughi_n2','Dấu chân voi');
 // update_sql('bieughi_n2');
 // add_page_ts('bieughi_n2');
-add_page_html('bieughi_n2','Dấu chân voi');
+// add_page_html('bieughi_n2','Dấu chân voi');
+list_page_ts('bieughi_n2');
 ?>

@@ -182,5 +182,24 @@ function add_page_html($tblname,$title){
   echo $txt;
 }
 
+function list_page_ts($tblname){
+  $txt = file_get_contents('list-bieughi-n1.page.ts');
+  $path=str_replace('_','-',$tblname);
+  $upcase=str_replace('_',' ',$tblname);
+  $upcase=ucwords($upcase);
+  $upcase=str_replace(' ','',$upcase);
+
+  // @Component
+  $txt = str_replace('bieughi-n1',$path,$txt);
+
+  // bieughi_n1
+  $txt = str_replace('bieughi_n1',$tblname,$txt);
+
+  // AddBieughiN1Page
+  $txt = str_replace('ListBieughiN1Page','List'.$upcase.'Page',$txt);
+
+  echo $txt;
+}
+
   
 ?>
