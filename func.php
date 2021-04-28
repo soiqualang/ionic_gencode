@@ -147,7 +147,7 @@ function update_sql($tblname){
   echo $txt.$newtbl;
 }
 
-function add_page_ts($tblname){
+function add_page_ts($tblname,$attr1){
   $txt = file_get_contents('add-bieughi-n1.page.ts');
   $path=str_replace('_','-',$tblname);
   $upcase=str_replace('_',' ',$tblname);
@@ -162,6 +162,9 @@ function add_page_ts($tblname){
 
   // AddBieughiN1Page
   $txt = str_replace('AddBieughiN1Page','Add'.$upcase.'Page',$txt);
+
+  // Tên hiện trong thông báo insert
+  $txt = str_replace('Tên tuyến điều tra, giám sát',$attr1,$txt);
 
   echo $txt;
 }
@@ -197,6 +200,25 @@ function list_page_ts($tblname){
 
   // AddBieughiN1Page
   $txt = str_replace('ListBieughiN1Page','List'.$upcase.'Page',$txt);
+
+  echo $txt;
+}
+
+function list_page_html($tblname,$title,$attr1,$attr2,$attr3,$attr4){
+  $txt = file_get_contents('list-bieughi-n1.page.html');
+  $path=str_replace('_','-',$tblname);
+  $upcase=str_replace('_',' ',$tblname);
+  $upcase=ucwords($upcase);
+  $upcase=str_replace(' ','',$upcase);
+
+  // <ion-title>Số lượng voi</ion-title>
+  $txt = str_replace('Số lượng voi',$title,$txt);
+
+  // bieughi_n1
+  $txt = str_replace('bieughi_n1',$tblname,$txt);
+
+  // bieughi-n1
+  $txt = str_replace('bieughi-n1',$path,$txt);
 
   echo $txt;
 }
