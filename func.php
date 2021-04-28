@@ -159,6 +159,21 @@ function add_page_ts($tblname){
   echo $txt;
 }
 
+function add_page_html($tblname,$title){
+  $txt = file_get_contents('add-bieughi-n1.page.html');
+  $path=str_replace('_','-',$tblname);
+  $upcase=str_replace('_',' ',$tblname);
+  $upcase=ucwords($upcase);
+  $upcase=str_replace(' ','',$upcase);
+
+  // <ion-title>Số lượng voi</ion-title>
+  $txt = str_replace('Số lượng voi',$title,$txt);
+
+  // bieughi_n1
+  $txt = str_replace('bieughi_n1',$tblname,$txt);
+
+  echo $txt;
+}
 
   
 ?>

@@ -12,5 +12,6 @@ include('func.php');
 // app_component_ts('bieughi_n2');
 // app_component_html('bieughi_n2','DẤU CHÂN VOI');
 // home_page_html('bieughi_n2','Dấu chân voi');
-add_page_ts('bieughi_n2');
+// add_page_ts('bieughi_n2');
+add_page_html('bieughi_n2','Dấu chân voi');
 ?>
