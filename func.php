@@ -140,6 +140,13 @@ function home_page_html($tblname,$title){
   echo $txt;
 }
 
+function update_sql($tblname){
+  $txt = file_get_contents('db_v2_min.sql');
+  $newtbl='CREATE TABLE IF NOT EXISTS "'.$tblname.'" ( "id" integer NULL, "maso" text NOT NULL PRIMARY KEY, "x" real, "y" real, "maso_nguoidung" text NULL, "takedate" text NULL, "trangthai" integer NULL, "thuoctinh" text NULL );';
+
+  echo $txt.$newtbl;
+}
+
 function add_page_ts($tblname){
   $txt = file_get_contents('add-bieughi-n1.page.ts');
   $path=str_replace('_','-',$tblname);
