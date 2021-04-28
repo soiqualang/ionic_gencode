@@ -65,9 +65,29 @@ function app_routing_module($tblname){
     echo $txt;
 }
 
-function app_component($tblname,$title){
+function app_component($tblname){
+  $path=str_replace('_','-',$tblname);
+  $txt = file_get_contents('app.component.ts');
+  $loc0="
+//-----LOC0--------//
 
+  public ".$tblname."_collect = [
+    {
+      title: 'Danh sách thu thập',
+      url: 'list-".$path."',
+      icon: 'list'
+    },
+    {
+      title: 'Thu thập dữ liệu',
+      url: '/add-".$path."',
+      icon: 'add-circle'
+    }
+  ];";
+
+  $txt=str_replace("//-----LOC0--------//",$loc0,$txt);
+  echo $txt;
 }
 
 
+  
 ?>

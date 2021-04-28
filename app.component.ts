@@ -32,6 +32,8 @@ export class AppComponent {
     } */
   ];
 
+//-----LOC0--------//
+
   public bieughi_n1_collect = [
     {
       title: 'Danh sách thu thập',
@@ -43,35 +45,7 @@ export class AppComponent {
       url: '/add-bieughi-n1',
       icon: 'add-circle'
     }
-  ];
-
-  public bieughi_n2_collect = [
-    {
-      title: 'Danh sách thu thập',
-      url: '#',
-      icon: 'list'
-    },
-    {
-      title: 'Thu thập dữ liệu',
-      url: '#',
-      icon: 'add-circle'
-    }
-  ];
-
-  public bieughi_khac_collect = [
-    {
-      title: 'Danh sách thu thập',
-      url: '#',
-      icon: 'list'
-    },
-    {
-      title: 'Thu thập dữ liệu',
-      url: '#',
-      icon: 'add-circle'
-    }
-  ];
-
-  
+  ];  
 
   public appAuthPage=[
     {
