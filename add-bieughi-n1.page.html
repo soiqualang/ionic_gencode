@@ -1,0 +1,107 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Số lượng voi</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <div *ngIf="bieughi_n1">
+    <ion-input hidden [(ngModel)]="bieughi_n1.id" placeholder="ID"></ion-input>  
+    <ion-input hidden [(ngModel)]="bieughi_n1.maso" placeholder="Mã số"></ion-input>
+    <ion-input hidden [(ngModel)]="bieughi_n1.maso_nguoidung" placeholder="Mã người cập nhật"></ion-input>
+    <ion-input hidden [(ngModel)]="bieughi_n1.takedate" placeholder="Thời gian cập nhật"></ion-input>
+    <ion-input hidden [(ngModel)]="bieughi_n1.trangthai" placeholder="Trạng thái"></ion-input>
+    <!-- Mã số: {{login.getCookie('maso')}} -->
+
+    <!-- {{bieughi_n1.maso}} -->
+    
+    <!-- Toa do -->
+    <ion-card class="welcome-card">
+      <ion-card-header>
+        <ion-card-subtitle>Vị trí <span *ngIf="locationCoords.accuracy">(Acc: {{locationCoords.accuracy/2}})</span></ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content>      
+        <ion-item button (click)="checkGPSPermission()">
+          <ion-icon name="locate" slot="start"></ion-icon>
+          <ion-label>Lấy tọa độ vị trí</ion-label>
+        </ion-item>
+        <ion-item button (click)="openModal()">
+          <ion-icon name="map" slot="start"></ion-icon>
+          <ion-label>Mở bản đồ</ion-label>
+        </ion-item>
+      </ion-card-content>
+    </ion-card>
+    
+
+    
+    <ion-item>
+      <ion-label position="stacked">Kinh độ (WGS84)*</ion-label>
+      <ion-input type="number" [(ngModel)]="bieughi_n1.x" placeholder="Lon"></ion-input>
+    </ion-item>
+    
+    <ion-item>
+      <ion-label position="stacked">Vĩ độ (WGS84)*</ion-label>
+      <ion-input type="number" [(ngModel)]="bieughi_n1.y" placeholder="Lat"></ion-input>
+    </ion-item>
+
+
+    <!-- Parse json thuoctinh -->
+
+    <ion-list>
+      <ion-list-header>
+        Thông tin thuộc tính
+      </ion-list-header>
+
+      <!-- Không hiện Địa điểm xảy ra -->
+      <ng-container *ngFor="let t1 of thuoctinh_data_2frm | keyvalue">
+        <!-- Đối với input required -->
+        <ion-item *ngIf="checkkey(t1.key) && !t1.value.hidden && t1.value.require && t1.value.type!='selectbox'">
+          <ion-label position="stacked">{{t1.value.title}} *</ion-label>
+          <ion-input required [type]="t1.value.type" [(ngModel)]="thuoctinh_data[t1.value.title]" placeholder="{{t1.value.placeholder}}"></ion-input>
+        </ion-item>
+
+        <!-- Đối với selectbox -->
+        <ion-item *ngIf="checkkey(t1.key) && !t1.value.hidden && t1.value.type=='selectbox'">
+          <ion-label position="stacked">{{t1.value.title}} *</ion-label>
+          <ion-select [(ngModel)]="thuoctinh_data[t1.value.title]" placeholder="{{t1.value.placeholder}}" interface="action-sheet">
+            <!-- <ion-select-option *ngFor="let opt of t1.value.option | keyvalue" [value]="opt.key">{{ opt.value }}</ion-select-option> -->
+            <ion-select-option *ngFor="let opt of t1.value.option" [value]="opt[api.keys(opt)[0]]">{{ api.keys(opt)[0] }}</ion-select-option>
+          </ion-select>
+        </ion-item>
+
+        <!-- Đối với các input còn lại -->
+        <ion-item *ngIf="checkkey(t1.key) && !t1.value.hidden && !t1.value.require && t1.value.type!='selectbox'">
+          <ion-label position="stacked">{{t1.value.title}}</ion-label>
+          <ion-input [type]="t1.value.type" [(ngModel)]="thuoctinh_data[t1.value.title]" placeholder="{{t1.value.placeholder}}"></ion-input>
+        </ion-item>
+     </ng-container>
+      
+    </ion-list>
+
+
+    <!-- {{fid}} -->
+    <ion-card class="welcome-card" (click)="db.go2page('hinhanh-congtrinh/bieughi_n1/'+fid)">
+      <ion-img *ngIf="imgarr_len != 0" [src]="first_img"></ion-img>
+      <ion-img *ngIf="imgarr_len == 0" src="/assets/img/noimg.png"></ion-img>
+      <ion-card-header>
+        <!-- <ion-card-subtitle *ngIf="imgarr_len != 0">{{img_takedate}} | Còn {{imgarr_len-1}} hình nữa.</ion-card-subtitle> -->
+        <ion-card-subtitle *ngIf="imgarr_len != 0">
+          {{db.getTime(img_takedate)}} {{db.getDate(img_takedate)}} <br>
+          Có {{imgarr_len}} hình đã chụp, click để xem.
+        </ion-card-subtitle>
+        <ion-card-subtitle *ngIf="imgarr_len == 0">Chọn hình ảnh</ion-card-subtitle>
+      </ion-card-header>
+    </ion-card>
+
+    
+  </div>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar color="primary">
+    <ion-button fill="clear" expand="full" color="light" (click)="insert_table()">Thêm thông tin</ion-button>
+  </ion-toolbar>
+</ion-footer>

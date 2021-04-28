@@ -1,0 +1,1 @@
+CREATE TABLE IF NOT EXISTS "bieughi_n1" ( "id" integer NULL, "maso" text NOT NULL PRIMARY KEY, "x" real, "y" real, "maso_nguoidung" text NULL, "takedate" text NULL, "trangthai" integer NULL, "thuoctinh" text NULL );
