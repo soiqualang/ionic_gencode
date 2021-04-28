@@ -56,7 +56,7 @@ export class DatabaseService {
   bieughi_n1_arr = new BehaviorSubject([]);
   hinhanh_arr = new BehaviorSubject([]);
 
-  serv_URL='https://api.dothanhlong.org/elephant_tracking_services/';
+  serv_URL='url';
 
   constructor(public plt: Platform, public sqlite: SQLite, public http: HttpClient,private route: ActivatedRoute,private router: Router, public api:ApiService) {
     this.plt.ready().then(() => {
@@ -86,10 +86,6 @@ export class DatabaseService {
     });
   }
 
-  /* 
-  https://api.dothanhlong.org/elephant_tracking_services/syn.php?tblname=cong_thongso_loaicong&schema=congtrinh 
-  https://github.com/soiqualang/appthucdia/blob/master/app/js2/syn.js
-  */
   synDatabase(schema:any,tblname:any){
     return new Promise(resolve => {
       this.http.post<any[]>(this.serv_URL+'syn.php'+'?tblname='+tblname+'&schema='+schema,{
@@ -111,7 +107,7 @@ export class DatabaseService {
 
   sync_nguoidung(){
     return new Promise(resolve => {
-      this.http.post<any[]>('https://api.dothanhlong.org/elephant_tracking_services/syn.php?tblname=nguoidung&schema=quantri',{
+      this.http.post<any[]>('url',{
         headers: { 'Content-Type': 'application/json',
         'Accept': 'application/json'
         }
@@ -131,7 +127,7 @@ export class DatabaseService {
 
   sync_phongban(){
     return new Promise(resolve => {
-      this.http.post<any[]>('https://api.dothanhlong.org/elephant_tracking_services/syn.php?tblname=phongban&schema=quantri',{
+      this.http.post<any[]>('url',{
         headers: { 'Content-Type': 'application/json',
         'Accept': 'application/json'
         }
@@ -152,7 +148,7 @@ export class DatabaseService {
 
   sync_config(){
     return new Promise(resolve => {
-      this.http.post<any[]>('https://api.dothanhlong.org/elephant_tracking_services/syn.php?tblname=config&schema=mobile',{
+      this.http.post<any[]>('url',{
         headers: { 'Content-Type': 'application/json',
         'Accept': 'application/json'
         }
