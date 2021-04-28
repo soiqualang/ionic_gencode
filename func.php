@@ -247,5 +247,24 @@ function view_page_ts($tblname){
   echo $txt;
 }
 
+function view_page_html($tblname,$title){
+  $txt = file_get_contents('view-bieughi-n1.page.html');
+  $path=str_replace('_','-',$tblname);
+  $upcase=str_replace('_',' ',$tblname);
+  $upcase=ucwords($upcase);
+  $upcase=str_replace(' ','',$upcase);
+
+  // Chi tiết điểm thu thập
+  $txt = str_replace('Chi tiết điểm thu thập',$title,$txt);
+
+  // bieughi_n1
+  $txt = str_replace('bieughi_n1',$tblname,$txt);
+
+  // bieughi-n1
+  $txt = str_replace('bieughi-n1',$path,$txt);
+
+  echo $txt;
+}
+
   
 ?>
