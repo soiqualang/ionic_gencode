@@ -65,7 +65,7 @@ function app_routing_module($tblname){
     echo $txt;
 }
 
-function app_component($tblname){
+function app_component_ts($tblname){
   $path=str_replace('_','-',$tblname);
   $txt = file_get_contents('app.component.ts');
   $loc0="
@@ -87,6 +87,33 @@ function app_component($tblname){
   $txt=str_replace("//-----LOC0--------//",$loc0,$txt);
   echo $txt;
 }
+
+function app_component_html($tblname,$title){
+  $txt = file_get_contents('app.component.html');
+  $loc0='
+<!-- //-----LOC0--------// -->
+
+              <ng-container *ngIf="login.check_permissions(\'mb_trongtrot_dichbenh\',\'xem\')">
+                <ion-item-divider>
+                  <ion-label color="primary">
+                    <b>'.$title.'</b>
+                  </ion-label>
+                </ion-item-divider>
+                <ion-menu-toggle auto-hide="false" *ngFor="let p of '.$tblname.'_collect">
+                  <ion-item [routerDirection]="root" [routerLink]="[p.url]">
+                    <ion-icon slot="start" [name]="p.icon"></ion-icon>
+                    <ion-label>
+                      {{p.title}}
+                    </ion-label>
+                  </ion-item>
+                </ion-menu-toggle>
+              </ng-container>';
+
+  $txt=str_replace("<!-- //-----LOC0--------// -->",$loc0,$txt);
+  echo $txt;
+}
+
+
 
 
   
