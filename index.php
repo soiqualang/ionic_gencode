@@ -16,5 +16,6 @@ include('func.php');
 // add_page_ts('bieughi_n2','Tên tuyến điều tra, giám sát');
 // add_page_html('bieughi_n2','Dấu chân voi');
 // list_page_ts('bieughi_n2');
-list_page_html('bieughi_n2','Dấu chân voi','Tên tuyến điều tra, giám sát','Thời gian bắt đầu','Tên khu vực điều tra, giám sát','Ghi chú');
+// list_page_html('bieughi_n2','Dấu chân voi','Tên tuyến điều tra, giám sát','Thời gian bắt đầu','Tên khu vực điều tra, giám sát','Ghi chú');
+view_page_ts('bieughi_n2');
 ?>

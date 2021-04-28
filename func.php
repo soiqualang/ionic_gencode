@@ -228,5 +228,24 @@ function list_page_html($tblname,$title,$attr1,$attr2,$attr3,$attr4){
   echo $txt;
 }
 
+function view_page_ts($tblname){
+  $txt = file_get_contents('view-bieughi-n1.page.ts');
+  $path=str_replace('_','-',$tblname);
+  $upcase=str_replace('_',' ',$tblname);
+  $upcase=ucwords($upcase);
+  $upcase=str_replace(' ','',$upcase);
+
+  // @Component
+  $txt = str_replace('bieughi-n1',$path,$txt);
+
+  // bieughi_n1
+  $txt = str_replace('bieughi_n1',$tblname,$txt);
+
+  // AddBieughiN1Page
+  $txt = str_replace('ViewBieughiN1Page','View'.$upcase.'Page',$txt);
+
+  echo $txt;
+}
+
   
 ?>
