@@ -24,7 +24,8 @@ export interface bieughi_n1 {
   maso_nguoidung: string,
   takedate: string,
   trangthai: number,
-  thuoctinh: string
+  thuoctinh: string,
+  gpsinfo: string
 }
 
 

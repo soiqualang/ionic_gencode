@@ -16,7 +16,8 @@ export interface '.$tblname.' {
   maso_nguoidung: string,
   takedate: string,
   trangthai: number,
-  thuoctinh: string
+  thuoctinh: string,
+  gpsinfo: string
 }';
 
 $loc2='
@@ -100,7 +101,7 @@ function app_component_html($tblname,$title){
                   </ion-label>
                 </ion-item-divider>
                 <ion-menu-toggle auto-hide="false" *ngFor="let p of '.$tblname.'_collect">
-                  <ion-item [routerDirection]="root" [routerLink]="[p.url]">
+                  <ion-item [routerDirection]="\'root\'" [routerLink]="[p.url]">
                     <ion-icon slot="start" [name]="p.icon"></ion-icon>
                     <ion-label>
                       {{p.title}}

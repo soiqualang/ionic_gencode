@@ -38,7 +38,8 @@ export class AddBieughiN1Page implements OnInit {
     maso: null,
     maso_nguoidung: null,
     takedate: null,
-    trangthai: null
+    trangthai: null,
+    gpsinfo: null
   };
 
   dataReturned:any;
@@ -293,7 +294,8 @@ export class AddBieughiN1Page implements OnInit {
           maso: null,
           maso_nguoidung: null,
           takedate: null,
-          trangthai: null
+          trangthai: null,
+          gpsinfo: null
         };
         this.imgarr_len=0;
         this.first_img=null;
@@ -393,6 +395,7 @@ export class AddBieughiN1Page implements OnInit {
 
       this.bieughi_n1['x']=resp.coords.longitude;
       this.bieughi_n1['y']=resp.coords.latitude;
+      this.bieughi_n1['gpsinfo']=resp;
     }).catch((error) => {
       alert('Error getting location' + error);
     });
