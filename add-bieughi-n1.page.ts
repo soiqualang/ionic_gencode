@@ -395,7 +395,9 @@ export class AddBieughiN1Page implements OnInit {
 
       this.bieughi_n1['x']=resp.coords.longitude;
       this.bieughi_n1['y']=resp.coords.latitude;
-      this.bieughi_n1['gpsinfo']=this.api.json2str(resp);
+      this.bieughi_n1['gpsinfo']=this.api.GPSInfo2Str(resp);
+      console.log(this.bieughi_n1['gpsinfo']);
+      
     }).catch((error) => {
       alert('Error getting location' + error);
     });
