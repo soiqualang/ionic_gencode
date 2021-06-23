@@ -1,0 +1,52 @@
+<ion-header>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <ion-title>
+        Số lượng voi
+      </ion-title>
+    </ion-toolbar>
+    <ion-toolbar>
+      <ion-searchbar debounce="500" [(ngModel)]="query" (ionChange)=search_filter()></ion-searchbar>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content>
+    <!-- {{notifi}} -->
+  
+    <ion-virtual-scroll [items]="bieughi_n12">
+  
+      <ion-card *virtualItem="let item" [routerLink]="['/', 'list-bieughi-n1', item.maso]">
+        <ion-item>
+          <h4 text-capitalize>{{api.parsejson(item.thuoctinh)["Tên tuyến điều tra, giám sát"]}}</h4>
+          <!-- <h4 text-capitalize>{{item.mota1}}</h4> -->
+          &nbsp;&nbsp; <span>
+            <div *ngIf="item.trangthai==0;then chuagui else dagui"></div>
+            <ng-template #chuagui>
+              <ion-label slot="end" color="warning">
+                <p>Chưa gửi</p>
+              </ion-label>
+            </ng-template>
+            <ng-template #dagui>
+              <ion-label slot="end" color="success">
+                <p>Đã gửi</p>
+              </ion-label>
+            </ng-template>
+          </span>
+        </ion-item>
+        <ion-card-content>
+          <p ng-if='api.parsejson(item.thuoctinh)["Thời gian bắt đầu"]'>Thời gian bắt đầu: {{api.getDate(item.takedate)}} | {{api.getTime(item.takedate)}}</p>
+          <p ng-if='api.parsejson(item.thuoctinh)["Tên khu vực điều tra, giám sát"]'>Tên khu vực điều tra, giám sát: {{api.parsejson(item.thuoctinh)["Tên khu vực điều tra, giám sát"]}}</p>
+          <p ng-if='api.parsejson(item.thuoctinh)["Ghi chú"]'>Ghi chú: {{api.parsejson(item.thuoctinh)["Ghi chú"]}}</p>
+        </ion-card-content>
+      </ion-card>
+  
+    </ion-virtual-scroll>
+  
+    <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+      <ion-fab-button [routerLink]="['/', 'add-bieughi-n1']" *ngIf="login.check_permissions('mb_diem_thiethai','xem')">
+        <ion-icon name="add"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>
+  </ion-content>

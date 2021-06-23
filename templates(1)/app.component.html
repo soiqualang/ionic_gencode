@@ -1,0 +1,102 @@
+<ion-app>
+    <ion-split-pane>
+      <ion-menu type="overlay">
+        <ion-header>
+          <ion-toolbar>
+            <ion-title>Chức năng</ion-title>
+          </ion-toolbar>
+        </ion-header>
+        <ion-content>
+          <ion-list>
+            <!-- Danh sach cac chuc nang neu dang nhap ok -->
+            <ng-container *ngIf="window.islogin">
+  
+              <ion-item>
+                <ion-avatar slot="start">
+                  <img src="/assets/img/avatar.svg">
+                </ion-avatar>
+                <ion-label>
+                  <h2>{{window.user_info.fullname}}</h2>
+                  <p>{{window.user_info.tenphongban}}</p>
+                </ion-label>
+              </ion-item>
+    
+                <ion-item (click)="login.do_sync()">
+                  <ion-avatar slot="start">
+                    <img src="{{window.syncing_icon}}">
+                  </ion-avatar>
+                  <ion-label>Đồng bộ dữ liệu</ion-label>
+                </ion-item>
+              
+  
+              <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages">
+                <ion-item [routerDirection]="'root'" [routerLink]="[p.url]">
+                  <ion-icon slot="start" [name]="p.icon"></ion-icon>
+                  <ion-label>
+                    {{p.title}}
+                  </ion-label>
+                </ion-item>
+              </ion-menu-toggle>
+
+<!-- //-----LOC0--------// -->
+
+              <!-- <ng-container *ngIf="login.check_token(2, api.parsejson(window.token))"> -->
+              <ng-container *ngIf="login.check_permissions('mb_trongtrot_dichbenh','xem')">
+                <ion-item-divider>
+                  <ion-label color="primary">
+                    <b>SỐ LƯỢNG VOI</b>
+                  </ion-label>
+                </ion-item-divider>
+                <ion-menu-toggle auto-hide="false" *ngFor="let p of bieughi_n1_collect">
+                  <ion-item [routerDirection]="'root'" [routerLink]="[p.url]">
+                    <ion-icon slot="start" [name]="p.icon"></ion-icon>
+                    <ion-label>
+                      {{p.title}}
+                    </ion-label>
+                  </ion-item>
+                </ion-menu-toggle>
+              </ng-container>
+              
+  
+              <ion-item-divider>
+                <ion-label>
+                  CHỨC NĂNG KHÁC
+                </ion-label>
+              </ion-item-divider>            
+  
+              <ion-menu-toggle auto-hide="false">
+                <ion-item (click)="login.do_logout()">
+                  <ion-icon slot="start" name="log-out"></ion-icon>
+                  <ion-label>
+                    ĐĂNG XUẤT
+                  </ion-label>
+                </ion-item>
+              </ion-menu-toggle>
+  
+            </ng-container>
+            
+  
+            <!-- Menu dang nhap khi chua dang nhap -->
+            <ng-container *ngIf="!window.islogin">
+              <ion-item-divider>
+                <ion-label>
+                  Chức năng khác
+                </ion-label>
+              </ion-item-divider>
+              <ion-menu-toggle auto-hide="false" *ngFor="let p of appAuthPage">
+                <ion-item [routerDirection]="'root'" [routerLink]="[p.url]">
+                  <ion-icon slot="start" [name]="p.icon"></ion-icon>
+                  <ion-label>
+                    {{p.title}}
+                  </ion-label>
+                </ion-item>
+              </ion-menu-toggle>
+            </ng-container>
+  
+          </ion-list>
+        </ion-content>
+      </ion-menu>
+      <ion-router-outlet main></ion-router-outlet>
+    </ion-split-pane>
+  </ion-app>
+  

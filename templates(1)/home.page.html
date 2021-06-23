@@ -1,0 +1,40 @@
+<ion-header>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <ion-title>
+        App theo dõi Voi
+      </ion-title>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content class="ion-padding">
+
+    <!-- Biểu ghi số 1 -->
+    <ion-card class="welcome-card" *ngIf="login.check_permissions('mb_diem_thiethai','xem')">
+      <img src="/assets/img/voi.jpg" alt="" />
+
+<!-- //-----LOC0--------// -->
+
+      <ion-card-header>
+        <ion-card-title>Số lượng Voi</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-item button (click)="db.go2page('list-bieughi-n1')">
+        <ion-icon name="list" slot="start"></ion-icon>
+        <ion-label>Số liệu đã thu thập</ion-label>
+        <ion-button fill="outline" slot="end">Xem</ion-button>
+        </ion-item>
+        <ion-item button (click)="db.go2page('add-bieughi-n1')">
+        <ion-icon name="add-circle" slot="start"></ion-icon>
+        <ion-label>Thêm số liệu</ion-label>
+        <ion-button fill="outline" slot="end">Thêm</ion-button>
+        </ion-item>
+      </ion-card-content>
+  
+    </ion-card>
+    
+  </ion-content>
+   
+  
