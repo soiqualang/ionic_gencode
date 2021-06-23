@@ -1,6 +1,6 @@
 <?php
 function database_service($tblname){
-$txt = file_get_contents('database.service.ts');
+$txt = file_get_contents('templates/database.service.ts');
 // echo $txt;
 
 $arr1=[];
@@ -59,7 +59,7 @@ echo $txt;
 }
 
 function app_routing_module($tblname){
-    $txt = file_get_contents('app-routing.module.ts');
+    $txt = file_get_contents('templates/app-routing.module.ts');
     
     $path=str_replace('_','-',$tblname);
     $txt = str_replace("path: 'view-".$path."', loadChildren","path: 'list-".$path."/:maso', loadChildren",$txt);
@@ -68,7 +68,7 @@ function app_routing_module($tblname){
 
 function app_component_ts($tblname){
   $path=str_replace('_','-',$tblname);
-  $txt = file_get_contents('app.component.ts');
+  $txt = file_get_contents('templates/app.component.ts');
   $loc0="
 //-----LOC0--------//
 
@@ -90,7 +90,7 @@ function app_component_ts($tblname){
 }
 
 function app_component_html($tblname,$title){
-  $txt = file_get_contents('app.component.html');
+  $txt = file_get_contents('templates/app.component.html');
   $loc0='
 <!-- //-----LOC0--------// -->
 
@@ -115,7 +115,7 @@ function app_component_html($tblname,$title){
 }
 
 function home_page_html($tblname,$title){
-  $txt = file_get_contents('home.page.html');
+  $txt = file_get_contents('templates/home.page.html');
   $path=str_replace('_','-',$tblname);
 
   $loc0='
@@ -142,14 +142,14 @@ function home_page_html($tblname,$title){
 }
 
 function update_sql($tblname){
-  $txt = file_get_contents('db_v2_min.sql');
+  $txt = file_get_contents('templates/db_v2_min.sql');
   $newtbl='CREATE TABLE IF NOT EXISTS "'.$tblname.'" ( "id" integer NULL, "maso" text NOT NULL PRIMARY KEY, "x" real, "y" real, "maso_nguoidung" text NULL, "takedate" text NULL, "trangthai" integer NULL, "thuoctinh" text NULL );';
 
   echo $txt.$newtbl;
 }
 
 function add_page_ts($tblname,$attr1){
-  $txt = file_get_contents('add-bieughi-n1.page.ts');
+  $txt = file_get_contents('templates/add-bieughi-n1.page.ts');
   $path=str_replace('_','-',$tblname);
   $upcase=str_replace('_',' ',$tblname);
   $upcase=ucwords($upcase);
@@ -171,7 +171,7 @@ function add_page_ts($tblname,$attr1){
 }
 
 function add_page_html($tblname,$title){
-  $txt = file_get_contents('add-bieughi-n1.page.html');
+  $txt = file_get_contents('templates/add-bieughi-n1.page.html');
   $path=str_replace('_','-',$tblname);
   $upcase=str_replace('_',' ',$tblname);
   $upcase=ucwords($upcase);
@@ -187,7 +187,7 @@ function add_page_html($tblname,$title){
 }
 
 function list_page_ts($tblname){
-  $txt = file_get_contents('list-bieughi-n1.page.ts');
+  $txt = file_get_contents('templates/list-bieughi-n1.page.ts');
   $path=str_replace('_','-',$tblname);
   $upcase=str_replace('_',' ',$tblname);
   $upcase=ucwords($upcase);
@@ -206,7 +206,7 @@ function list_page_ts($tblname){
 }
 
 function list_page_html($tblname,$title,$attr1,$attr2,$attr3,$attr4){
-  $txt = file_get_contents('list-bieughi-n1.page.html');
+  $txt = file_get_contents('templates/list-bieughi-n1.page.html');
   $path=str_replace('_','-',$tblname);
   $upcase=str_replace('_',' ',$tblname);
   $upcase=ucwords($upcase);
@@ -230,7 +230,7 @@ function list_page_html($tblname,$title,$attr1,$attr2,$attr3,$attr4){
 }
 
 function view_page_ts($tblname){
-  $txt = file_get_contents('view-bieughi-n1.page.ts');
+  $txt = file_get_contents('templates/view-bieughi-n1.page.ts');
   $path=str_replace('_','-',$tblname);
   $upcase=str_replace('_',' ',$tblname);
   $upcase=ucwords($upcase);
@@ -249,7 +249,7 @@ function view_page_ts($tblname){
 }
 
 function view_page_html($tblname,$title){
-  $txt = file_get_contents('view-bieughi-n1.page.html');
+  $txt = file_get_contents('templates/view-bieughi-n1.page.html');
   $path=str_replace('_','-',$tblname);
   $upcase=str_replace('_',' ',$tblname);
   $upcase=ucwords($upcase);
