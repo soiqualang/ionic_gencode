@@ -205,12 +205,14 @@ function list_page_ts($tblname){
   echo $txt;
 }
 
-function list_page_html($tblname,$title,$attr1,$attr2,$attr3,$attr4){
+function list_page_html($tblname,$title,$attr){
   $txt = file_get_contents('templates/list-bieughi-n1.page.html');
   $path=str_replace('_','-',$tblname);
   $upcase=str_replace('_',' ',$tblname);
   $upcase=ucwords($upcase);
   $upcase=str_replace(' ','',$upcase);
+
+  $attr_arr=explode(";",$attr);
 
   // <ion-title>Số lượng voi</ion-title>
   $txt = str_replace('Số lượng voi',$title,$txt);
@@ -221,10 +223,10 @@ function list_page_html($tblname,$title,$attr1,$attr2,$attr3,$attr4){
   // bieughi-n1
   $txt = str_replace('bieughi-n1',$path,$txt);
 
-  $txt = str_replace('Tên tuyến điều tra, giám sát',$attr1,$txt);
-  $txt = str_replace('Thời gian bắt đầu',$attr2,$txt);
-  $txt = str_replace('Tên khu vực điều tra, giám sát',$attr3,$txt);
-  $txt = str_replace('Ghi chú',$attr4,$txt);
+  $txt = str_replace('Tên tuyến điều tra, giám sát',$attr_arr[0],$txt);
+  $txt = str_replace('Thời gian bắt đầu',$attr_arr[1],$txt);
+  $txt = str_replace('Tên khu vực điều tra, giám sát',$attr_arr[2],$txt);
+  $txt = str_replace('Ghi chú',$attr_arr[3],$txt);
 
   echo $txt;
 }
